@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ember & Oak — Fine Dining</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-text">Ember <span class="amp">&</span> Oak</span>
+    </div>
+    <ul class="nav-links">
+
+    </ul>
+    <a href="#contact" class="nav-cta">Reserve a Table</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ========== HERO — scroll-driven video ========== -->
+  <!--
+    .hero-scroll-container  → tall wrapper (300vh) — creates the scroll space
+    .hero-sticky            → sticks to viewport while user scrolls through 300vh
+    video#heroVideo         → paused, currentTime driven by scroll position
+  -->
+  <div class="hero-scroll-container" id="heroScrollContainer">
+    <div class="hero-sticky" id="heroSticky">
+
+      <!-- VIDEO — off-screen but NOT display:none so browser decodes frames -->
+      <video
+        id="heroVideo"
+        muted
+        playsinline
+        preload="auto"
+        style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;top:0;left:0;"
+      >
+        <source src="bg.webm" type="video/webm" />
+      </video>
+
+      <!-- CANVAS — every rAF draws latest video frame here = zero seek stutter -->
+      <canvas id="heroCanvas" class="hero-canvas"></canvas>
+
+      <!-- dark gradient overlay -->
+      <div class="hero-overlay"></div>
+
+      <!-- content layers that fade/move as you scroll -->
+      <div class="hero-content" id="heroContent">
+        <p class="hero-eyebrow">Est. 2018 · New York</p>
+        <h1 class="hero-title">
+          Where Fire Meets<br /><em>Flavour</em>
+        </h1>
+        <p class="hero-subtitle">
+          Wood-fired cuisine crafted from the finest local ingredients,<br />
+          served in an atmosphere of quiet luxury.
+        </p>
+        <div class="hero-actions">
+          <a href="#about" class="btn btn-primary">Explore</a>
+          <a href="#contact" class="btn btn-ghost">Reserve Now</a>
+        </div>
+      </div>
+
+      <!-- progress bar at bottom -->
+      <div class="hero-progress-bar">
+        <div class="hero-progress-fill" id="heroProgressFill"></div>
+      </div>
+
+      <!-- scroll hint -->
+      <div class="hero-scroll-indicator" id="heroScrollHint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END HERO -->
+
+  <!-- ========== MARQUEE STRIP ========== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Wood-Fired Excellence</span>
+      <span class="dot">✦</span>
+      <span>Seasonal Menus</span>
+      <span class="dot">✦</span>
+      <span>Craft Cocktails</span>
+      <span class="dot">✦</span>
+      <span>Private Dining</span>
+      <span class="dot">✦</span>
+      <span>Award-Winning Chefs</span>
+      <span class="dot">✦</span>
+      <span>Wood-Fired Excellence</span>
+      <span class="dot">✦</span>
+      <span>Seasonal Menus</span>
+      <span class="dot">✦</span>
+      <span>Craft Cocktails</span>
+      <span class="dot">✦</span>
+      <span>Private Dining</span>
+      <span class="dot">✦</span>
+      <span>Award-Winning Chefs</span>
+      <span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Ember <span class="amp">&</span> Oak</span>
+          <p>Wood-fired cuisine, seasonal menus, and an atmosphere of quiet luxury in the heart of New York.</p>
+
+        </div>
+        <div class="footer-col"><h5>Contact</h5><ul><li>Chandigarh University, Mohali.</li><li>+91 8395897002</li><li>ceo@zyanix.shop</li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ember & Oak.</p>
+        <p>Crafted By Shubham Pathak (CEO ZYANIX).</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
